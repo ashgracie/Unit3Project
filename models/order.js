@@ -61,6 +61,24 @@ orderSchema.methods.addItemToCart = async function(itemId) {
   }
   return cart.save();
 };
+orderSchema.methods.deleteItemFromCart = async function(itemId) {
+  const cart = this;
+  console.log("deleteItemFromCart");
+  // Check if item already in cart
+  const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId));
+  if (lineItem) {
+    lineItem.qty -= 1;
+    if (lineItem.qty <=0) {
+      for (let i = cart.lineItems.length-1; i >= 0 ; i--) {
+        if (cart.lineItems[i].item._id==itemId){
+          cart.lineItems.splice(i,1)
+          // delete cart.lineItems[i]
+        }
+      }
+    }
+  }
+  return cart.save();
+};
 
 // Instance method to set an item's qty in the cart (will add item if does not exist)
 orderSchema.methods.setItemQty = function(itemId, newQty) {

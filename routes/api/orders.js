@@ -7,8 +7,14 @@ const ordersCtrl = require('../../controllers/api/orders');
 router.get('/cart', ordersCtrl.cart);
 // GET /api/orders/history
 router.get('/history', ordersCtrl.history);
+// DELETE /api/orders/history:id
+router.delete('/history/:id', ordersCtrl.deleteOder);
+
+
 // POST /api/orders/cart/items/:id
 router.post('/cart/items/:id', ordersCtrl.addToCart);
+// POST /api/orders/cart/items/delete/:id
+router.post('/cart/items/delete/:id', ordersCtrl.removeFromCart);
 // POST /api/orders/cart/checkout
 router.post('/cart/checkout', ordersCtrl.checkout);
 // POST /api/orders/cart/qty

@@ -19,6 +19,7 @@ export async function login (credentials) {
 
 export function getToken () {
   const token = window.localStorage.getItem('token')
+  console.log("getToken");
   // getItem will return null if no key
   if (!token) return null
   const payload = JSON.parse(atob(token.split('.')[1]))
@@ -26,8 +27,10 @@ export function getToken () {
   if (payload.exp < Date.now() / 1000) {
     // Token has expired
     window.localStorage.removeItem('token')
+    console.log("token exp");
     return null
   }
+//  console.log("token = ",token);
   return token
 }
 

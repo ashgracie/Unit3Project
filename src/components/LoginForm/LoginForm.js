@@ -14,11 +14,16 @@ export default function LoginForm ({ setUser }) {
   }
 
   const handleSubmit = async (evt) => {
+    console.log("handleSubmit");
     evt.preventDefault()
     try {
+      console.log("user1");
       const user = await userService.login(credentials)
+      console.log("user2");
+      console.log("user",user);
       setUser(user)
     } catch (error) {
+      console.log("user3",error.message);
       setError(error.message)
     }
   }
