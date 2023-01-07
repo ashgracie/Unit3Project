@@ -7,7 +7,7 @@ export default function NavBar() {
       &nbsp; | &nbsp;
       <Link to="/orders">Order History</Link>
       &nbsp; | &nbsp;
-      <Link to="/">Signout</Link>
+      <a href="/">Signout</a>
     </nav>
   );
 }

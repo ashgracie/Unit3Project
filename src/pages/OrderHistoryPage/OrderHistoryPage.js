@@ -39,6 +39,7 @@ export default function OrderHistoryPage(props){
                     orders.map((order)=>{
                         return (<>
                             Ordered on {(new Date(order.createdAt)).toString()}<br/>
+                            <ul>
                             {
                                 order.lineItems.map(lineItem=>{
                                     let item = lineItem.item
@@ -55,6 +56,7 @@ export default function OrderHistoryPage(props){
                                     
                                 })
                             }
+                            </ul>
                             <button onClick={() => deleteOrder(order._id)}>Delete This Order</button>
                             <hr/>
 
